@@ -11,7 +11,7 @@ examples=[
     {"input":"woolen sweater", "output":"winter wear"},
     {"input":"denim jacket", "output":"winter wear"},
     {"input":"linen pants", "output":"summer wear"},
-    {"input":"cotton saree", "output":"winter wear"},  
+    {"input":"cotton saree", "output":"summer    wear"},  
 ]
 #format for the examples
 example_prompt=ChatPromptTemplate.from_messages([
@@ -25,8 +25,10 @@ userfewshotprompt=FewShotChatMessagePromptTemplate(
 )
 
 prompt=ChatPromptTemplate.from_messages([
-    ("human","{question}"),
     ("system","you are a fashion expert who can classify the cloths into summer wear and winter wear"),
+    userfewshotprompt,             
+    ("human","{question}"),
+    
     userfewshotprompt,
 ])
 
